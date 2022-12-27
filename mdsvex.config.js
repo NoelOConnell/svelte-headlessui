@@ -1,11 +1,16 @@
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from 'rehype-slug';
+import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-const config = {
-  extensions: [".svelte.md", ".md", ".svx"],
+const config = defineConfig({
+	extensions: ['.svelte.md', '.md', '.svx'],
 
-  remarkPlugins: [],
-  rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
-};
+	smartypants: {
+		dashes: 'oldschool'
+	},
+
+	remarkPlugins: [],
+	rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]
+});
 
 export default config;
